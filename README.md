@@ -37,9 +37,17 @@ https://ai.stanford.edu/~amaas/data/sentiment/
 ---
 
 ## 🔹 Custom Word Embeddings
-- Trained simple custom embeddings using the tokenizer output
-- Embeddings initialized and normalized using NumPy
-- Saved in text format as `custom_embeddings.txt`
+
+The word embeddings were trained from scratch using a **data-driven co-occurrence
+learning objective**. A co-occurrence matrix was constructed from the dataset,
+and embeddings were learned by minimizing reconstruction error using
+**stochastic gradient descent (SGD)**.
+
+This approach is inspired by matrix factorization methods (similar to GloVe)
+and ensures that embeddings are **genuinely learned from data**, rather than
+randomly initialized. Training was performed on a representative subset of the
+dataset to keep computation efficient.
+
 
 ---
 
@@ -57,15 +65,15 @@ https://ai.stanford.edu/~amaas/data/sentiment/
 ---
 
 ## 📊 Results & Comparison
-- The custom tokenizer + embeddings pipeline shows lower performance
-- This is expected due to:
-  - Randomly initialized embeddings
-  - Limited training data
-  - Very simple subword representation
-- The TF-IDF baseline performs significantly better
 
-This comparison highlights the importance of high-quality embeddings
-and large-scale training in NLP tasks.
+- The custom tokenizer and embeddings pipeline demonstrates a complete NLP
+  workflow built entirely from scratch.
+- Due to limited training data and simplified tokenization, the custom pipeline
+  performs lower than the TF-IDF baseline.
+- The TF-IDF baseline benefits from strong statistical text representations and
+  performs significantly better.
+- This comparison highlights the trade-off between custom-built NLP pipelines
+  and pre-trained or statistically optimized representations.
 
 ---
 
